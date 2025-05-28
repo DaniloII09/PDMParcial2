@@ -30,9 +30,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import coil.compose.AsyncImage
 import com.parciales.parcial2.model.ProductRepository
 import com.parciales.parcial2.viewmodel.ProductDetailViewModel
 import com.parciales.parcial2.ui.component.SearchBar
+import com.parciales.parcial2.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,7 +74,16 @@ fun ProductDetailScreen(
                     .verticalScroll(rememberScrollState())
                     .fillMaxSize()
             ) {
-                /**/
+                AsyncImage(
+                    model = currentProduct.image,
+                    contentDescription = currentProduct.name,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(300.dp),
+                    placeholder = painterResource(id = R.drawable.ic_launcher_foreground),
+                    error = painterResource(id = R.drawable.ic_launcher_background),
+                    contentScale = ContentScale.Fit
+                )
 
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
